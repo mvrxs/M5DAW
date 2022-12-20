@@ -38,6 +38,11 @@ int totalDamageEnemies;
 int attackEnemies = totalDamageEnemies;
 int leftAttack = 3;
 
+// VARIABLE POR FUNCIONES
+void heroattack(int attacks, int& enemyHPS) {
+	enemyHPS = enemyHPS - attacks;
+}
+
 void weapons() {
 	switch (selectWeapon) {
 	case 1:
