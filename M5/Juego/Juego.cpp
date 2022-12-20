@@ -7,7 +7,6 @@
 
 using namespace std;
 
-
 // Atributos del enemigo
 int enemyHP = 300;
 string enemyName = "Boo";
@@ -52,7 +51,6 @@ void damageEnemies(int& HHP, int& damages){
 void weapons() {
 	switch (selectWeapon) {
 	case 1:
-		heroDamage = punchAttack;
             damageEnemies(heroHP, totalDamageEnemies); //EDITED
             heroAttack(punchAttack, enemyHP); //EDITED
 		
@@ -77,7 +75,6 @@ void weapons() {
 		}
 		break;
 	case 2:
-		heroDamage = jumpAttack;
         damageEnemies(heroHP, totalDamageEnemies); //EDITED
         heroAttack(jumpAttack, enemyHP); //EDITED
 		if (enemyHP <= 0) {
@@ -135,7 +132,6 @@ void weapons() {
 void weapons2() {
 	switch (selectWeapon2) {
 	case 1:
-		heroDamage = punchAttack;
         damageEnemies(heroHP, totalDamageEnemies); //EDITED
         heroAttack(punchAttack, enemyHP2); //EDITED
 		if (enemyHP2 <= 0) {
@@ -159,7 +155,6 @@ void weapons2() {
 		}
 		break;
 	case 2:
-		heroDamage = jumpAttack;
         damageEnemies(heroHP, totalDamageEnemies); //EDITED
         heroAttack(jumpAttack, enemyHP2); //EDITED
 		if (enemyHP2 <= 0) {
@@ -288,10 +283,7 @@ void weaponBOO() {
 	switch (selectWeapon) {
 
 	case 1:
-		heroDamage = punchAttack;
-		enemyDamage = (rand() % 100);
-		heroHP = heroHP - enemyDamage;
-		enemyHP = enemyHP - punchAttack;
+        heroAttack(punchAttack, enemyHP); //EDITED
 		if (enemyHP <= 0) {
 			isAlive = false;
 		}
@@ -303,10 +295,7 @@ void weaponBOO() {
 		break;
 
 	case 2:
-		heroDamage = jumpAttack;
-		enemyDamage = (rand() % 100);
-		heroHP = heroHP - enemyDamage;
-		enemyHP = enemyHP - jumpAttack;
+        heroAttack(jumpAttack, enemyHP); //EDITED
 		if (enemyHP <= 0) {
 			isAlive = false;
 		}
@@ -318,15 +307,12 @@ void weaponBOO() {
 		break;
 
 	case 3:
-		enemyDamage = (rand() % 100);
-		heroHP = heroHP - enemyDamage;
 		leftAttack = leftAttack - 1;
 		if (leftAttack < 0) {
 			cout << "No te quedan más ataques de tipo fuego\n";
 		}
 		else {
-			heroDamage = fireAttack;
-			enemyHP = enemyHP - fireAttack;
+            heroAttack(fireAttack, enemyHP); //EDITED
 		}
 		if (enemyHP <= 0) {
 			isAlive = false;
@@ -344,10 +330,7 @@ void weaponGoomba() {
 	switch (selectWeapon) {
 
 	case 1:
-		heroDamage = punchAttack;
-		enemyDamage2 = (rand() % 100);
-		heroHP = heroHP - enemyDamage;
-		enemyHP2 = enemyHP2 - punchAttack;
+        heroAttack(punchAttack, enemyHP2); //EDITED
 		if (enemyHP2 <= 0) {
 			isAlive = false;
 		}
@@ -359,10 +342,7 @@ void weaponGoomba() {
 		break;
 
 	case 2:
-		heroDamage = jumpAttack;
-		enemyDamage2 = (rand() % 100);
-		heroHP = heroHP - enemyDamage;
-		enemyHP2 = enemyHP2 - jumpAttack;
+        heroAttack(jumpAttack, enemyHP2); //EDITED
 		if (enemyHP2 <= 0) {
 			isAlive = false;
 		}
@@ -374,15 +354,12 @@ void weaponGoomba() {
 		break;
 
 	case 3:
-		enemyDamage2 = (rand() % 100);
-		heroHP = heroHP - enemyDamage;
 		leftAttack = leftAttack - 1;
 		if (leftAttack < 0) {
 			cout << "No te quedan más ataques de tipo fuego\n";
 		}
 		else {
-			heroDamage = fireAttack;
-			enemyHP2 = enemyHP2 - fireAttack;
+            heroAttack(fireAttack, enemyHP2); //EDITED
 		}
 		if (enemyHP <= 0) {
 			isAlive = false;
@@ -450,7 +427,7 @@ int main()
 			break;
 		}
 		else if (heroHP <= 0) {
-			heroDead;
+			heroDead();
 			//PlaySound(TEXT("dead.wav"), NULL, SND_LOOP);
 			break;
 		}
