@@ -39,7 +39,7 @@ int attackEnemies = totalDamageEnemies;
 int leftAttack = 3;
 
 // VARIABLE POR FUNCIONES
-void heroattack(int attacks, int& enemyHPS) {
+void heroAttack(int attacks, int& enemyHPS) {
 	enemyHPS = enemyHPS - attacks;
 }
 
@@ -51,7 +51,8 @@ void weapons() {
 		enemyDamage2 = (rand() % 100);
 		totalDamageEnemies = enemyDamage + enemyDamage2;
 		heroHP = heroHP - totalDamageEnemies;
-		enemyHP = enemyHP - punchAttack;
+		heroAttack(punchAttack, enemyHP); //EDITED
+		
 		if (enemyHP <= 0) {
 			cout << "Has matado al enemigo " << enemyName << "\n";
 			cout << "El enemigo " << enemyName << " ha muerto\n";
@@ -60,7 +61,7 @@ void weapons() {
 			break;
 		}
 		else {
-			PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP << "HP al enemigo " << enemyName << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage << " puntos de damage\n";
 			cout << "Te han atacado a la vez con " << totalDamageEnemies << " puntos de damage\n";
@@ -78,7 +79,7 @@ void weapons() {
 		enemyDamage2 = (rand() % 100);
 		totalDamageEnemies = enemyDamage + enemyDamage2;
 		heroHP = heroHP - totalDamageEnemies;
-		enemyHP = enemyHP - jumpAttack;
+        heroAttack(jumpAttack, enemyHP); //EDITED
 		if (enemyHP <= 0) {
 			cout << "Has matado al enemigo " << enemyName << "\n";
 			cout << "El enemigo " << enemyName << " ha muerto\n";
@@ -87,7 +88,7 @@ void weapons() {
 
 		}
 		else {
-			PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP << "HP al enemigo " << enemyName << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage << " puntos de damage\n";
 			cout << "Te han atacado a la vez con " << totalDamageEnemies << " puntos de damage\n";
@@ -110,8 +111,7 @@ void weapons() {
 			cout << "No te quedan más ataques de tipo fuego\n";
 		}
 		else {
-			heroDamage = fireAttack;
-			enemyHP = enemyHP - fireAttack;
+            heroAttack(fireAttack, enemyHP); //EDITED
 		}
 		if (enemyHP <= 0) {
 			cout << "Has matado al enemigo " << enemyName << "\n";
@@ -120,7 +120,7 @@ void weapons() {
 			isAlive = false;
 		}
 		else {
-			PlaySound(TEXT("fire.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("fire.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP << "HP al enemigo " << enemyName << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage << " puntos de damage\n";
 			cout << "Te han atacado a la vez con " << totalDamageEnemies << " puntos de damage\n";
@@ -143,7 +143,7 @@ void weapons2() {
 		enemyDamage2 = (rand() % 100);
 		totalDamageEnemies = enemyDamage + enemyDamage2;
 		heroHP = heroHP - totalDamageEnemies;
-		enemyHP2 = enemyHP2 - punchAttack;
+        heroAttack(punchAttack, enemyHP2); //EDITED
 		if (enemyHP2 <= 0) {
 			cout << "Has matado al enemigo " << enemyName2 << "\n";
 			cout << "El enemigo " << enemyName2 << " ha muerto\n";
@@ -152,7 +152,7 @@ void weapons2() {
 		}
 
 		else {
-			PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP2 << "HP al enemigo " << enemyName2 << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage2 << " puntos de damage\n";
 			cout << "Te han atacado a la vez con " << totalDamageEnemies << " puntos de damage\n\n";
@@ -170,7 +170,7 @@ void weapons2() {
 		enemyDamage2 = (rand() % 100);
 		totalDamageEnemies = enemyDamage + enemyDamage2;
 		heroHP = heroHP - totalDamageEnemies;
-		enemyHP2 = enemyHP2 - jumpAttack;
+        heroAttack(jumpAttack, enemyHP2); //EDITED
 		if (enemyHP2 <= 0) {
 			cout << "Has matado al enemigo " << enemyName2 << "\n";
 			cout << "El enemigo " << enemyName2 << " ha muerto\n";
@@ -178,7 +178,7 @@ void weapons2() {
 			isAlive2 = false;
 		}
 		else {
-			PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP2 << "HP al enemigo " << enemyName2 << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage2 << " puntos de damage\n";
 			cout << "Te han atacado a la vez con " << totalDamageEnemies << " puntos de damage\n\n";
@@ -200,8 +200,7 @@ void weapons2() {
 			cout << "No te quedan más ataques de tipo fuego\n";
 		}
 		else {
-			heroDamage = fireAttack;
-			enemyHP = enemyHP - fireAttack;
+            heroAttack(fireAttack, enemyHP2); //EDITED
 		}
 		if (enemyHP2 <= 0) {
 			cout << "Has matado al enemigo " << enemyName2 << "\n";
@@ -210,7 +209,7 @@ void weapons2() {
 			isAlive2 = false;
 		}
 		else {
-			PlaySound(TEXT("fire.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("fire.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP2 << "HP al enemigo " << enemyName2 << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage2 << " puntos de damage\n";
 			cout << "Te han atacado a la vez con " << totalDamageEnemies << " puntos de damage\n\n";
@@ -268,7 +267,7 @@ bool herolive() {
 int selectEnemies(int selectEnemy) {
 	if (selectEnemy == 1) {
 		cout << "Has elegido al enemigo 1\n";
-		PlaySound(TEXT("boo.wav"), NULL, SND_LOOP);
+		//PlaySound(TEXT("boo.wav"), NULL, SND_LOOP);
 		cout << "Atacas al " << enemyName << ", elige tu arma\n";
 		cout << "[1] - punch\n";
 		cout << "[2] - jump\n";
@@ -281,7 +280,7 @@ int selectEnemies(int selectEnemy) {
 	}
 	else if (selectEnemy == 2) {
 		cout << "Has elegido al enemigo 2\n";
-		PlaySound(TEXT("goomba.wav"), NULL, SND_LOOP);
+		//PlaySound(TEXT("goomba.wav"), NULL, SND_LOOP);
 		cout << "Atacas al " << enemyName2 << ", elige tu arma\n";
 		cout << "[1] - punch\n";
 		cout << "[2] - jump\n";
@@ -309,7 +308,7 @@ void weaponBOO() {
 			isAlive = false;
 		}
 		else {
-			PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP << "HP al enemigo " << enemyName << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage << " puntos de damage\n";
 		}
@@ -324,7 +323,7 @@ void weaponBOO() {
 			isAlive = false;
 		}
 		else {
-			PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP << "HP al enemigo " << enemyName << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage << " puntos de damage\n";
 		}
@@ -345,7 +344,7 @@ void weaponBOO() {
 			isAlive = false;
 		}
 		else {
-			PlaySound(TEXT("fire.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("fire.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP << "HP al enemigo " << enemyName << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage << " puntos de damage\n";
 		}
@@ -365,7 +364,7 @@ void weaponGoomba() {
 			isAlive = false;
 		}
 		else {
-			PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP2 << "HP al enemigo " << enemyName2 << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage2 << " puntos de damage\n";
 		}
@@ -380,7 +379,7 @@ void weaponGoomba() {
 			isAlive = false;
 		}
 		else {
-			PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("punch.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP2 << "HP al enemigo " << enemyName2 << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage2 << " puntos de damage\n";
 		}
@@ -401,7 +400,7 @@ void weaponGoomba() {
 			isAlive = false;
 		}
 		else {
-			PlaySound(TEXT("fire.wav"), NULL, SND_LOOP);
+			//PlaySound(TEXT("fire.wav"), NULL, SND_LOOP);
 			cout << "Le queda " << enemyHP2 << "HP al enemigo " << enemyName2 << "\n";
 			cout << "El enemigo te ha hecho " << enemyDamage2 << " puntos de damage\n";
 		}
