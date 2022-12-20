@@ -12,13 +12,17 @@ using namespace std;
 int enemyHP = 300;
 string enemyName = "Boo";
 bool isAlive = true;
-int enemyDamage;
+
 
 // Atributos del enemigo
 int enemyHP2 = 250;
 string enemyName2 = "Goomba";
 bool isAlive2 = true;
-int enemyDamage2;
+
+
+int enemyDamage = (rand() % 100);
+int enemyDamage2 = (rand() % 100);
+int totalDamageEnemies = (enemyDamage + enemyDamage2);
 
 
 //Atributos de héroe
@@ -34,8 +38,6 @@ bool heroAlive = true;
 int selectEnemy;
 int selectWeapon;
 int selectWeapon2;
-int totalDamageEnemies;
-int attackEnemies = totalDamageEnemies;
 int leftAttack = 3;
 
 // VARIABLE POR FUNCIONES
@@ -43,15 +45,16 @@ void heroAttack(int attacks, int& enemyHPS) {
 	enemyHPS = enemyHPS - attacks;
 }
 
+void damageEnemies(int& HHP, int& damages){
+    HHP = HHP - damages;
+}
+
 void weapons() {
 	switch (selectWeapon) {
 	case 1:
 		heroDamage = punchAttack;
-		enemyDamage = (rand() % 100);
-		enemyDamage2 = (rand() % 100);
-		totalDamageEnemies = enemyDamage + enemyDamage2;
-		heroHP = heroHP - totalDamageEnemies;
-		heroAttack(punchAttack, enemyHP); //EDITED
+            damageEnemies(heroHP, totalDamageEnemies); //EDITED
+            heroAttack(punchAttack, enemyHP); //EDITED
 		
 		if (enemyHP <= 0) {
 			cout << "Has matado al enemigo " << enemyName << "\n";
@@ -75,10 +78,7 @@ void weapons() {
 		break;
 	case 2:
 		heroDamage = jumpAttack;
-		enemyDamage = (rand() % 100);
-		enemyDamage2 = (rand() % 100);
-		totalDamageEnemies = enemyDamage + enemyDamage2;
-		heroHP = heroHP - totalDamageEnemies;
+        damageEnemies(heroHP, totalDamageEnemies); //EDITED
         heroAttack(jumpAttack, enemyHP); //EDITED
 		if (enemyHP <= 0) {
 			cout << "Has matado al enemigo " << enemyName << "\n";
@@ -102,10 +102,7 @@ void weapons() {
 		}
 		break;
 	case 3:
-		enemyDamage = (rand() % 100);
-		enemyDamage2 = (rand() % 100);
-		totalDamageEnemies = enemyDamage + enemyDamage2;
-		heroHP = heroHP - totalDamageEnemies;
+        damageEnemies(heroHP, totalDamageEnemies); //EDITED
 		leftAttack = leftAttack - 1;
 		if (leftAttack < 0) {
 			cout << "No te quedan más ataques de tipo fuego\n";
@@ -139,10 +136,7 @@ void weapons2() {
 	switch (selectWeapon2) {
 	case 1:
 		heroDamage = punchAttack;
-		enemyDamage = (rand() % 100);
-		enemyDamage2 = (rand() % 100);
-		totalDamageEnemies = enemyDamage + enemyDamage2;
-		heroHP = heroHP - totalDamageEnemies;
+        damageEnemies(heroHP, totalDamageEnemies); //EDITED
         heroAttack(punchAttack, enemyHP2); //EDITED
 		if (enemyHP2 <= 0) {
 			cout << "Has matado al enemigo " << enemyName2 << "\n";
@@ -166,10 +160,7 @@ void weapons2() {
 		break;
 	case 2:
 		heroDamage = jumpAttack;
-		enemyDamage = (rand() % 100);
-		enemyDamage2 = (rand() % 100);
-		totalDamageEnemies = enemyDamage + enemyDamage2;
-		heroHP = heroHP - totalDamageEnemies;
+        damageEnemies(heroHP, totalDamageEnemies); //EDITED
         heroAttack(jumpAttack, enemyHP2); //EDITED
 		if (enemyHP2 <= 0) {
 			cout << "Has matado al enemigo " << enemyName2 << "\n";
@@ -191,10 +182,7 @@ void weapons2() {
 		}
 		break;
 	case 3:
-		enemyDamage = (rand() % 100);
-		enemyDamage2 = (rand() % 100);
-		totalDamageEnemies = enemyDamage + enemyDamage2;
-		heroHP = heroHP - totalDamageEnemies;
+        damageEnemies(heroHP, totalDamageEnemies); //EDITED
 		leftAttack = leftAttack - 1;
 		if (leftAttack < 0) {
 			cout << "No te quedan más ataques de tipo fuego\n";
